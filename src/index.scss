@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;400;500&display=swap');
+
+$color-primary: #008b8b;
+$color-done: #042727;
+$color-darkgrey: #333;
+$color-white: #fff;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'MuseoModerno', cursive;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+body {
+  button {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .todo {
+    padding: 15px;
+    min-height: 100vh;
+    background-color: $color-primary;
+
+    .title {
+      margin-bottom: 25px;
+      font-size: 46px;
+      font-weight: 500;
+      text-align: center;
+      color: $color-white;
+    }
+
+    .todo-action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      .task-input {
+        padding: 5px 10px;
+        min-width: 250px;
+        font-size: 14px;
+        color: $color-darkgrey;
+        background-color: $color-white;
+        border: none;
+      }
+
+      .add-task {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: none;
+        color: $color-darkgrey;
+        background-color: $color-white;
+        border-left: 2px solid $color-primary;
+
+        &:hover {
+          background-color: darken($color-white, 10);
+        }
+      }
+    }
+
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      margin-top: 25px;
+      max-width: 340px;
+      width: 100%;
+      list-style: none;
+      background-color: $color-white;
+
+      .task {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin: 10px;
+        padding: 5px;
+        padding-left: 15px;
+        width: 90%;
+        color: $color-darkgrey;
+        background-color: $color-primary;
+
+        > span,
+        > input {
+          flex: 1;
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 400;
+          color: $color-white;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid transparent;
+        }
+
+        > span {
+          cursor: pointer;
+        }
+
+        > input {
+          margin-right: 15px;
+          border-bottom: 1px solid $color-white;
+
+          &::placeholder {
+            color: rgba($color-white, 0.8);
+          }
+        }
+
+        > button {
+          padding: 2px 5px;
+          margin-right: 5px;
+          font-size: 12px;
+          color: $color-white;
+          background-color: transparent;
+          border: 1px solid $color-white;
+
+          &:hover {
+            color: $color-primary;
+            background-color: $color-white;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        &.done::before {
+          opacity: 1;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 10px;
+          transform: translateY(-50%);
+          width: 75%;
+          height: 1px;
+          background-color: $color-done;
+          opacity: 0;
+        }
+
+        &:first-child {
+          margin-top: 15px;
+        }
+
+        &:last-child {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
